@@ -5,6 +5,9 @@ test -n "$DESKTOP_AUTOSTART_ID" && {
     dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 }
 
+(gnome-flashback &)
+(gsd-xsettings &)
+sleep 6
 i3
 
 test -n "$DESKTOP_AUTOSTART_ID" && {
