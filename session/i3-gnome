@@ -5,10 +5,20 @@ test -n "$DESKTOP_AUTOSTART_ID" && {
     dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 }
 
-(gnome-flashback &)
-(gsd-xsettings &)
-sleep 6
+procs=("gnome-flashback", "gsd-xsettings", "gnome-keyring-daemon -f", "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
+procslength=${#procs[@]}
+
+for (( i=0; i<${procslength}; i++ )); do
+    ${procs[$i]} &
+    pids[$i]=$!
+done
+
+sleep 3
 i3
+
+for pid in ${pids[*]}; do
+    kill $pid
+done
 
 test -n "$DESKTOP_AUTOSTART_ID" && {
 dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.Logout "uint32:1"
