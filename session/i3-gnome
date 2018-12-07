@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 # Register with gnome-session so that it does not kill the whole session thinking it is dead.
 test -n "$DESKTOP_AUTOSTART_ID" && {
     dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 }
 
-procs=("gnome-flashback", "gsd-xsettings", "gnome-keyring-daemon -f", "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
+procs=("/usr/bin/gnome-flashback" "/usr/lib/gnome-settings-daemon/gsd-xsettings" "/usr/bin/gnome-keyring-daemon -f")
 procslength=${#procs[@]}
 
 for (( i=0; i<${procslength}; i++ )); do
