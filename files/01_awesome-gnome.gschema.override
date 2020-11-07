@@ -1,3 +1,7 @@
 [org.gnome.gnome-flashback:Awesome-GNOME]
 desktop=false
 root-background=true
+
+[org.gnome.Terminal.Legacy.Settings:Awesome-GNOME]
+default-show-menubar=false
+headerbar=false
