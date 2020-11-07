@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Awesome (GNOME)
+Comment=This session logs you into GNOME with the Awesome window manager
+Exec=gnome-session-awesome
+TryExec=awesome-gnome
+Icon=/usr/share/pixmaps/awesome.xpm
+Type=Application
+DesktopNames=GNOME
+X-Ubuntu-Gettext-Domain=gnome-session-3.0
