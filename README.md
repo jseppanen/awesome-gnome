@@ -1,17 +1,14 @@
-# i3-gnome
-Use i3 with GNOME Session integration for Ubuntu 18.04
+# awesome-gnome
 
-## Dependencies
-This repo creates a new session in GMD3 called "i3 + Gnome". The requirements are gnome-flashback and i3.
+Use [Awesome window manager](https://awesomewm.org) on Ubuntu 20.04 with GNOME stuff like control center and such working.
 
-```
-apt install -y i3 gnome-flashback
-```
+Based on [i3-gnome](https://github.com/i3-gnome/i3-gnome).
 
 ## Installation
 
 ```
-make install
+sudo apt-get install awesome gdm3 gnome-session gnome-settings-daemon
+sudo make install
 ```
 
 ## Uninstallation
@@ -19,7 +16,3 @@ make install
 ```
 make uninstall
 ```
-
-## Configuration
-
-Everything should work out of the box. If you like to use nm-applet add `exec --no-startup-id dbus-launch nm-applet` to your i3 config file.
