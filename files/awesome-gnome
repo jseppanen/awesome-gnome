@@ -5,7 +5,13 @@ test -n "$DESKTOP_AUTOSTART_ID" && {
     dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:awesome-gnome" "string:$DESKTOP_AUTOSTART_ID"
 }
 
+# gnome-flashback makes display brightness controls work
+/usr/bin/gnome-flashback &
+GNOME_FLASHBACK_PID=$!
+
 awesome
+
+kill $GNOME_FLASHBACK_PID
 
 # Logout process.
 test -n "$DESKTOP_AUTOSTART_ID" && {
